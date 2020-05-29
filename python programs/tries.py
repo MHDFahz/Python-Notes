@@ -6,7 +6,7 @@ class Node:
         self.father = None
 
     def insert(self, word):
-        parent = selfa
+        parent = self
         for i, char in enumerate(word):
             if char not in parent.children:
                 parent.children[char] = Node(char)
@@ -23,7 +23,8 @@ class Node:
                 return False
             parent = parent.children[char]
         return parent.endhere
-    def startWith(self,prefix):
+
+    def startWith(self, prefix):
         print(f"Search startwith {prefix} in {self.val}")
         parent = self
         for char in prefix:
@@ -31,6 +32,7 @@ class Node:
                 return False
             parent = parent.children[char]
         return True
+
     def level(self):
         level = 0
         p = self.father
@@ -48,14 +50,12 @@ class Node:
 
 node = Node("MainNode")
 node.insert("apple")
-node.insert("appy")
+node.insert("apply")
 node.insert("dog")
 node.insert("down")
 node.insert("drown")
 node.print()
 print(node.search("apple"))
-print(node.search("appl"))
+print(node.search("apply"))
 print(node.startWith("appl"))
 print(node.startWith("appr"))
-
-
